@@ -1,0 +1,42 @@
+
+//count the sub arrays whose sum is divisible by  k
+#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+
+int main() 
+{
+	int n=6,k=5;
+	int arr[n]={4,5,0,-2,-3,1};
+	int prefix[n];
+
+	// reading values into prefix array
+	prefix[0]=arr[0];
+	for(int i=1;i<n;i++)
+        {
+            
+            prefix[i]=prefix[i-1]+arr[i];
+
+        }
+	
+	map<int,int>dic;
+	int count=0;
+	dic.insert({0,1});
+
+	int r;
+	for(auto i:prefix)
+	{
+	    r=i%k;
+	   
+	    if(dic.find(r)!=dic.end())
+	    {
+	        count+=dic[r];
+	    }
+	    dic[r]+=1;
+	}
+
+	cout<<count;
+return 0;
+}
+
+	
