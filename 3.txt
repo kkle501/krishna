@@ -1,0 +1,34 @@
+//To print string pallindrome using recursion
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+bool check(int l,int r,string str)
+{
+    if(l>=r/2)
+	    return 1;
+	    
+	if(str[l]!=str[r-l-1])
+		return 0;
+	
+	return check(l+1,r,str);
+}
+
+
+int main() 
+{
+	string str;// input
+	cin>>str;
+	int len=str.size();
+	
+	int l=0,r=len;
+	bool f=check(l,r,str);  // function call
+	
+	if(f==0)
+    	cout<<"The string is not palindrome ";
+    else
+    	cout<<"The string is palindrome ";
+	
+return 0;
+}
