@@ -1,0 +1,52 @@
+//Binary Search using recursion
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int bins(int l,int h,int k,int a[])
+{
+    int m=(l+h)/2;
+    
+    if(m==h&&a[m]!=k)
+    return -1;
+    
+    if(m==l&&a[m]!=k)
+    return -1;
+
+    if(a[m]==k)
+	return a[m];
+
+    if(k>a[m])
+	return(bins(m+1,h,k,a));
+	
+    return (bins(l,m-1,k,a));
+
+}
+
+
+int main() 
+{
+	
+	int n;
+	cin>>n;// array size
+
+	int a[n];
+	for(int i=0;i<n;i++) // reading array elements
+	{
+	cin>>a[i];
+	}
+
+	int key;
+	cin>>key;// searching element
+	
+	int l=0,h=n-1;	
+	int ele=bins(l,h,key,a);
+	
+	if(ele!=key)
+	cout<<"The element is not found";
+	else
+	cout<<"The element is found";
+	
+return 0;
+}
