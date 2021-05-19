@@ -1,0 +1,53 @@
+//print all possible Cobinations to make sum is equal to target variable - Program:2 
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int n;
+int N;
+
+void combinations(int index,int N,vector<int>&v,int a[])
+{
+	// print the combination
+	if(index==n)
+	{
+		if(N==0)
+		{
+			for(auto i:v)
+			{
+			cout<<i<<" ";
+			}
+			cout<<"\n";
+		}
+		return;	
+	}
+
+	// if choose the element from the array
+	if(a[index]<=N)
+	{
+	v.push_back(a[index]);
+	combinations(index+1,N-(a[index]),v,a);
+	v.pop_back();
+	}   
+    
+    // if the element is not choose from the array
+    combinations(index+1,N,v,a);
+}
+
+
+int main() 
+{
+	
+	cin>>n>>N;
+	
+	int a[n];
+	for(int i=0;i<n;i++) // reading array elements
+	{
+	cin>>a[i];
+	}
+
+	vector <int> v;
+	combinations(0,N,v,a);// function call	
+	
+return 0;
+}
