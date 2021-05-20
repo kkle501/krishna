@@ -1,0 +1,59 @@
+// program to check the given input of brackets are balanced or not.
+
+#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+
+
+int main()
+{
+int t;// for no. of test cases
+cin>>t;
+
+while(t--)
+{
+	string s;// reading a string of brackets
+	cin>>s;
+	stack<char>sta;	
+
+	int flag=0;// for cross checking
+	
+	for(auto i:s)
+	{
+		if(i=='['||i=='{'||i=='(')
+		{
+			sta.push(i);
+		}
+		else
+		{
+			if(i==']' && !sta.empty() && sta.top()=='[')
+			{
+				sta.pop();
+			}
+			else if(i=='}' && !sta.empty() && sta.top()=='{')
+			{
+				sta.pop();
+			}
+			else if( i==')' && !sta.empty() && sta.top()=='(')
+			{
+				sta.pop();
+			}
+			else
+			{
+				flag=1;
+				break;
+			}		
+		}
+	
+	}
+
+	
+	if(flag==0)
+		cout<<" balanced"<<"\n";
+	else
+		cout<<" not balanced"<<"\n";
+}
+
+	
+return 0;
+}
