@@ -1,0 +1,41 @@
+// program to check the given input is balanced or not.
+
+#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+
+
+int main()
+{
+
+
+	int n;// for no. of elements
+	cin>>n;
+
+	int a[n+1];
+	for(int i=1;i<=n;i++) // reading elements into array
+	cin>>a[i];
+
+	stack<int>sta;
+	sta.push(0);
+	int length=0;
+	for(int i=1;i<=n;i++)
+	{
+		if(a[i]>0)
+		{
+		sta.push(i);  // insert index value instead of value
+		continue;
+		}
+
+		if(sta.top()==-1*(a[i]))
+		{
+		sta.pop();
+		length=max(length,i-sta.top());
+		}
+		else
+		sta.push(i);
+	}	
+	cout<<length;
+	
+return 0;
+}
